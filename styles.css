@@ -1,0 +1,545 @@
+/* BRP Autoslon Premium Styles - Glassmorphism & Telegram Enhanced */
+
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: rgba(0, 99, 199, 0.3);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0063c7;
+}
+
+/* ===== NAVIGATION STYLES ===== */
+
+/* Progress Bar (полоска скролла сверху) */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0063c7 0%, #3b82f6 50%, #0063c7 100%);
+    box-shadow: 0 0 10px rgba(0, 99, 199, 0.8);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+}
+
+/* Transparent Navigation */
+#navbar {
+    background: transparent;
+    border-bottom: none;
+}
+
+#navbar .glass-nav {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: none;
+}
+
+#navbar.scrolled .glass-nav {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(0, 99, 199, 0.3);
+    box-shadow: 
+        0 8px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 99, 199, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Статичная ширина без анимаций */
+#nav-container {
+    width: 100%;
+    max-width: 80rem; /* max-w-7xl = 1280px */
+}
+
+#nav-inner {
+    height: 4.5rem; /* 72px - фиксированная высота */
+}
+
+/* Подчеркивание только для пунктов меню (не для лого и кнопки) */
+nav .hidden.lg\\\\:flex a {
+    position: relative;
+}
+
+nav .hidden.lg\\\\:flex a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #0063c7;
+    transition: all 0.3s;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0, 99, 199, 0.8);
+}
+
+nav .hidden.lg\\\\:flex a:hover::after {
+    width: 100%;
+}
+
+/* Убираем подчеркивание у лого и кнопки Подпишись */
+nav a[href="#"],
+nav a[href="https://t.me/avtoslon"] {
+    text-decoration: none;
+}
+
+nav a[href="#"]::after,
+nav a[href="https://t.me/avtoslon"]::after {
+    display: none !important;
+}
+
+#navbar.scrolled {
+    background: transparent;
+    backdrop-filter: none;
+}
+
+/* ===== GLASSMORPHISM COMPONENTS ===== */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.01) 100%
+    );
+    pointer-events: none;
+}
+
+.glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 99, 199, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 99, 199, 0.2);
+}
+
+.glass-image {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.glass-stat {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.glass-stat:hover {
+    background: rgba(0, 99, 199, 0.1);
+    border-color: rgba(0, 99, 199, 0.3);
+}
+
+.glass-icon {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.glass-nav {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* ===== ENHANCED GLASS BUTTON ===== */
+.glass-button {
+    background: rgba(0, 99, 199, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgb(9 54 100 / 47%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.6s;
+}
+
+.glass-button:hover {
+    background: rgba(0, 99, 199, 0.3);
+    border-color: rgba(0, 99, 199, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.glass-button:hover::before {
+    left: 100%;
+}
+
+.glass-button:active {
+    transform: translateY(0);
+}
+
+/* ===== HERO GLASS EFFECTS ===== */
+.glass-text {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-text-accent {
+    color: #0063c7;
+    text-shadow: 0 0 30px rgba(0, 99, 199, 0.5);
+}
+
+.subtitle-container {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle-container p {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    margin: 0;
+}
+
+/* Hero animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Telegram Button */
+#floating-telegram {
+    animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Local video styles */
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+video:focus {
+    outline: none;
+}
+
+/* Table enhancements */
+table {
+    border-collapse: collapse;
+}
+
+table tr:hover td {
+    background: rgba(255,255,255,0.02);
+}
+
+/* Notification */
+#notification {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Scroll reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom scrollbar for table */
+.overflow-x-auto::-webkit-scrollbar {
+    height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 2px solid #0063c7;
+    outline-offset: 2px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .glass-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .subtitle-container {
+        padding: 1rem;
+        margin: 0 1rem;
+    }
+
+    table {
+        font-size: 0.875rem;
+    }
+
+    th, td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    /* На мобильных скрываем плавающую кнопку, так как есть sticky bar */
+    #floating-telegram {
+        bottom: 80px;
+    }
+}
+
+/* Print styles */
+@media print {
+    #navbar, #modal, button, #floating-telegram {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Стили для Telegram цвета - теперь синий #0063c7 */
+.text-telegram {
+    color: #0063c7;
+}
+
+.bg-telegram {
+    background-color: #0063c7;
+}
+
+.border-telegram {
+    border-color: #0063c7;
+}
+
+/* Улучшенные hover эффекты для карточек */
+.group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .glass-button::before {
+        display: none;
+    }
+}
+
+/* Мобильные: скрываем плавающую круглую кнопку, оставляем только sticky bar внизу */
+@media (max-width: 768px) {
+    #floating-telegram {
+        display: none !important;
+    }
+    
+    /* На мобильных progress bar можно сделать тоньше */
+    #scroll-progress {
+        height: 2px;
+    }
+}
+
+/* Мобильные оптимизации */
+@media (max-width: 768px) {
+    #navbar > div {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    #navbar .glass-nav {
+        border-radius: 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    #navbar.scrolled .glass-nav {
+        transform: scale(0.98);
+    }
+}
+
+/* Снег должен быть под шапкой, но над контентом и не мешать кликам */
+#snow-canvas {
+    will-change: transform;
+    transform: translateZ(0);
+    pointer-events: none;
+}
+
+/* Убедимся что интерактивные элементы кликабельны */
+nav, a, button {
+    position: relative;
+    z-index: 2;
+}
+
+/* Оптимизация видео-фона */
+#hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1 !important;
+    object-fit: cover;
+    object-position: center;
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-playsinline: true;
+}
+
+/* Убираем фон и рамку у изображений снегоходов в карточках */
+#skandic-2025 .glass-image,
+#skandic-2026 .glass-image,
+#expedition .glass-image {
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    position: relative;
+    overflow: visible;
+}
+
+/* Синее свечение под снегоходом (эффект "подсветки") */
+#skandic-2025 .glass-image::before,
+#skandic-2026 .glass-image::before,
+#expedition .glass-image::before {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 80px;
+    background: radial-gradient(ellipse at center, rgba(0, 99, 199, 0.5) 0%, rgba(0, 99, 199, 0.1) 40%, transparent 70%);
+    filter: blur(25px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+/* При наведении усиливаем свечение */
+#skandic-2025 .glass-image:hover::before,
+#skandic-2026 .glass-image:hover::before,
+#expedition .glass-image:hover::before {
+    opacity: 1;
+    background: radial-gradient(ellipse at center, rgba(0, 99, 199, 0.6) 0%, rgba(0, 99, 199, 0.2) 40%, transparent 70%);
+}
+
+/* Усиливаем тень самого снегохода для объёма */
+#skandic-2025 .glass-image img,
+#skandic-2026 .glass-image img,
+#expedition .glass-image img {
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+    z-index: 1;
+    position: relative;
+}
+
+/* Опционально: лёгкая анимация "парения" */
+@keyframes levitate {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+#skandic-2025 .glass-image img,
+#skandic-2026 .glass-image img,
+#expedition .glass-image img {
+    animation: levitate 5s ease-in-out infinite;
+}
+
+/* Отключаем анимацию при наведении, чтобы не мешала scale */
+#skandic-2025 .glass-image:hover img,
+#skandic-2026 .glass-images:hover img,
+#expedition .glass-image:hover img {
+    animation-play-state: paused;
+}
+/* Отступ для футера на мобильных, чтобы sticky bar не перекрывал контент */
+@media (max-width: 768px) {
+    footer {
+        padding-bottom: 100px; /* Высота sticky bar + запас */
+    }
+}
