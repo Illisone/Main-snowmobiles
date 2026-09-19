@@ -1,4 +1,4 @@
-/* BRP Autoslon Premium Styles - Glassmorphism & Telegram Enhanced */
+/* SibXtrim Premium Styles - Glassmorphism */
 
 html {
     scroll-behavior: smooth;
@@ -28,7 +28,6 @@ html {
 
 /* ===== NAVIGATION STYLES ===== */
 
-/* Progress Bar (полоска скролла сверху) */
 #scroll-progress {
     position: fixed;
     top: 0;
@@ -40,7 +39,6 @@ html {
     transition: width 0.1s ease-out;
 }
 
-/* Transparent Navigation */
 #navbar {
     background: transparent;
     border-bottom: none;
@@ -48,7 +46,7 @@ html {
 
 #navbar .glass-nav {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
+    box-shadow:
         0 4px 30px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -60,28 +58,27 @@ html {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-color: rgba(0, 99, 199, 0.3);
-    box-shadow: 
+    box-shadow:
         0 8px 40px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(0, 99, 199, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Статичная ширина без анимаций */
 #nav-container {
     width: 100%;
-    max-width: 80rem; /* max-w-7xl = 1280px */
+    max-width: 80rem;
 }
 
 #nav-inner {
-    height: 4.5rem; /* 72px - фиксированная высота */
+    height: 4.5rem;
 }
 
-/* Подчеркивание только для пунктов меню (не для лого и кнопки) */
-nav .hidden.lg\\\\:flex a {
+/* Подчеркивание только для пунктов меню */
+nav .hidden.lg\:flex a {
     position: relative;
 }
 
-nav .hidden.lg\\\\:flex a::after {
+nav .hidden.lg\:flex a::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -94,18 +91,11 @@ nav .hidden.lg\\\\:flex a::after {
     box-shadow: 0 0 10px rgba(0, 99, 199, 0.8);
 }
 
-nav .hidden.lg\\\\:flex a:hover::after {
+nav .hidden.lg\:flex a:hover::after {
     width: 100%;
 }
 
-/* Убираем подчеркивание у лого и кнопки Подпишись */
-nav a[href="#"],
-nav a[href="https://t.me/avtoslon"] {
-    text-decoration: none;
-}
-
-nav a[href="#"]::after,
-nav a[href="https://t.me/avtoslon"]::after {
+nav a[href="#"]::after {
     display: none !important;
 }
 
@@ -264,23 +254,19 @@ nav a[href="https://t.me/avtoslon"]::after {
     }
 }
 
-/* Floating Telegram Button */
-#floating-telegram {
-    animation: slideInRight 0.5s ease-out;
+/* ===== HERO VIDEO ===== */
+#hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1 !important;
+    object-fit: cover;
+    object-position: center;
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-playsinline: true;
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Local video styles */
 video {
     width: 100%;
     height: auto;
@@ -298,18 +284,6 @@ table {
 
 table tr:hover td {
     background: rgba(255,255,255,0.02);
-}
-
-/* Notification */
-#notification {
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#notification.show {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 /* Scroll reveal animation */
@@ -344,7 +318,81 @@ table tr:hover td {
     outline-offset: 2px;
 }
 
-/* Mobile optimizations */
+/* ===== MODEL MODAL ===== */
+#model-modal {
+    z-index: 200;
+}
+
+#model-panel {
+    -webkit-overflow-scrolling: touch;
+}
+
+#model-content {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+/* Скролл-контейнер модалки */
+#model-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+#model-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+#model-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#model-scroll::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+#model-scroll::-webkit-scrollbar-thumb:hover {
+    background: #0063c7;
+}
+
+/* Мобильные: выезжает снизу */
+@media (max-width: 639px) {
+    #model-panel {
+        align-items: flex-end;
+    }
+
+    #model-content {
+        max-height: 92vh;
+    }
+
+    #model-content.translate-y-full {
+        transform: translateY(100%);
+    }
+
+    #model-scroll {
+        border-radius: 1.5rem 1.5rem 0 0;
+    }
+
+    #model-content > button {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+}
+
+/* Десктоп: центрированное окно с scale */
+@media (min-width: 640px) {
+    #model-content.translate-y-full {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    #model-content.sm\:scale-95 {
+        transform: scale(0.95);
+    }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
 @media (max-width: 640px) {
     #hero h1 {
         font-size: 2.5rem;
@@ -366,16 +414,43 @@ table tr:hover td {
     th, td {
         padding: 0.75rem 0.5rem;
     }
+}
 
-    /* На мобильных скрываем плавающую кнопку, так как есть sticky bar */
-    #floating-telegram {
-        bottom: 80px;
+@media (max-width: 768px) {
+    #navbar > div {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
+
+    #navbar .glass-nav {
+        border-radius: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    #navbar.scrolled .glass-nav {
+        transform: scale(0.98);
+    }
+
+    #scroll-progress {
+        height: 2px;
+    }
+}
+
+/* Снег под шапкой */
+#snow-canvas {
+    will-change: transform;
+    transform: translateZ(0);
+    pointer-events: none;
+}
+
+nav, a, button {
+    position: relative;
+    z-index: 2;
 }
 
 /* Print styles */
 @media print {
-    #navbar, #modal, button, #floating-telegram {
+    #navbar, #model-modal, button {
         display: none !important;
     }
 
@@ -383,24 +458,6 @@ table tr:hover td {
         background: white !important;
         color: black !important;
     }
-}
-
-/* Стили для Telegram цвета - теперь синий #0063c7 */
-.text-telegram {
-    color: #0063c7;
-}
-
-.bg-telegram {
-    background-color: #0063c7;
-}
-
-.border-telegram {
-    border-color: #0063c7;
-}
-
-/* Улучшенные hover эффекты для карточек */
-.group:hover .group-hover\:scale-105 {
-    transform: scale(1.05);
 }
 
 /* Reduced motion */
@@ -413,133 +470,5 @@ table tr:hover td {
 
     .glass-button::before {
         display: none;
-    }
-}
-
-/* Мобильные: скрываем плавающую круглую кнопку, оставляем только sticky bar внизу */
-@media (max-width: 768px) {
-    #floating-telegram {
-        display: none !important;
-    }
-    
-    /* На мобильных progress bar можно сделать тоньше */
-    #scroll-progress {
-        height: 2px;
-    }
-}
-
-/* Мобильные оптимизации */
-@media (max-width: 768px) {
-    #navbar > div {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-    
-    #navbar .glass-nav {
-        border-radius: 1rem;
-        margin: 0 0.5rem;
-    }
-    
-    #navbar.scrolled .glass-nav {
-        transform: scale(0.98);
-    }
-}
-
-/* Снег должен быть под шапкой, но над контентом и не мешать кликам */
-#snow-canvas {
-    will-change: transform;
-    transform: translateZ(0);
-    pointer-events: none;
-}
-
-/* Убедимся что интерактивные элементы кликабельны */
-nav, a, button {
-    position: relative;
-    z-index: 2;
-}
-
-/* Оптимизация видео-фона */
-#hero-video {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 1 !important;
-    object-fit: cover;
-    object-position: center;
-    transform: translateZ(0);
-    will-change: transform;
-    -webkit-playsinline: true;
-}
-
-/* Убираем фон и рамку у изображений снегоходов в карточках */
-#skandic-2025 .glass-image,
-#skandic-2026 .glass-image,
-#expedition .glass-image {
-    background: transparent;
-    border: none;
-    backdrop-filter: none;
-    box-shadow: none;
-    position: relative;
-    overflow: visible;
-}
-
-/* Синее свечение под снегоходом (эффект "подсветки") */
-#skandic-2025 .glass-image::before,
-#skandic-2026 .glass-image::before,
-#expedition .glass-image::before {
-    content: '';
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    height: 80px;
-    background: radial-gradient(ellipse at center, rgba(0, 99, 199, 0.5) 0%, rgba(0, 99, 199, 0.1) 40%, transparent 70%);
-    filter: blur(25px);
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-/* При наведении усиливаем свечение */
-#skandic-2025 .glass-image:hover::before,
-#skandic-2026 .glass-image:hover::before,
-#expedition .glass-image:hover::before {
-    opacity: 1;
-    background: radial-gradient(ellipse at center, rgba(0, 99, 199, 0.6) 0%, rgba(0, 99, 199, 0.2) 40%, transparent 70%);
-}
-
-/* Усиливаем тень самого снегохода для объёма */
-#skandic-2025 .glass-image img,
-#skandic-2026 .glass-image img,
-#expedition .glass-image img {
-    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
-    z-index: 1;
-    position: relative;
-}
-
-/* Опционально: лёгкая анимация "парения" */
-@keyframes levitate {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-#skandic-2025 .glass-image img,
-#skandic-2026 .glass-image img,
-#expedition .glass-image img {
-    animation: levitate 5s ease-in-out infinite;
-}
-
-/* Отключаем анимацию при наведении, чтобы не мешала scale */
-#skandic-2025 .glass-image:hover img,
-#skandic-2026 .glass-images:hover img,
-#expedition .glass-image:hover img {
-    animation-play-state: paused;
-}
-/* Отступ для футера на мобильных, чтобы sticky bar не перекрывал контент */
-@media (max-width: 768px) {
-    footer {
-        padding-bottom: 100px; /* Высота sticky bar + запас */
     }
 }
